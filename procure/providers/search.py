@@ -117,7 +117,8 @@ class SearchService:
             return [SearchResult(**r) for r in cached]
         self.cache.require_network_allowed(f"{endpoint} '{query}'")  # raises CacheMiss in replay mode
         if self.inner is None:
-            raise CacheMiss(f"no provider configured for {endpoint} '{query}'")
+            raise CacheMiss(f"no recorded response for {endpoint} '{query}' and no search key is configured "
+                            "(set SERPER_API_KEY in .env to run new queries)")
         self.ctx.budget.spend("search")  # web and places calls draw from one quota
         fn = self.inner.places if endpoint == "places" else self.inner.search
         results = fn(query, country=country, num=num)
@@ -150,4 +151,13 @@ def build_search_service(ctx: RunContext, cache: Cache) -> SearchService:
         return SearchService(ctx, cache, None)
     if name not in PROVIDERS:
         raise ProviderError(f"unknown search provider {name!r}; available: {sorted(PROVIDERS)}")
-    return SearchService(ctx, cache, PROVIDERS[name]())
+    try:
+        return SearchService(ctx, cache, PROVIDERS[name]())
+    except ProviderError as e:
+        # No key + normal cache mode: serve what was RECORDED (so a fresh clone can run the committed demo input end to end)
+        # and report every query that has no recorded answer. `refresh` explicitly wants the network, so it still fails.
+        if cache.mode == "auto" and "not set" in str(e):
+            ctx.log("setup", "warn", f"{e}. Using recorded searches only: any query without a recorded response will fail "
+                                     "and be reported (add the key to .env to run new queries).")
+            return SearchService(ctx, cache, None)
+        raise

@@ -87,7 +87,12 @@ planner queries; per-agent caps are `llm.agent.max_steps / max_searches / max_re
 | `procure compare A.json B.json` | side-by-side of two runs (e.g. rules-only vs agent) |
 | `procure run ... --llm <preset> --agent` | provider preset (`gemini`, `groq`, …) and model-directed research agents |
 
-Exit codes: `0` ok · `2` stopped by `--strict` (lists what to confirm) · `3` setup error (e.g. missing search key).
+Exit codes: `0` ok · `2` stopped by `--strict` (lists what to confirm) · `3` setup error (e.g. `--refresh` without a search key).
+
+**Will a clone get the same result?** The committed demo opened in the UI, and `--replay`, are identical (tested: 0 differences).
+A normal run (`auto` cache mode, the default) without `SERPER_API_KEY` serves the recorded searches and warns about any query that
+was never recorded; it can still differ slightly because failed page fetches are retried live and websites change. Use `--replay`
+(the UI's "replay" cache option) when you need exactly the recorded result. LLM / agent runs are not deterministic unless replayed.
 
 ### Web UI
 
@@ -131,7 +136,7 @@ procure/            pipeline, agents, CLI, API       config/   default.yaml (par
   normalize.py        stage 1: parse + ambiguity     data/cache/  committed response cache (replay)
   agents/discovery.py stage 3: search loops          demo/     input.json + output/ (committed result)
   agents/verify.py    stage 5: fetch + evidence      docs/     architecture, parameters, limitations
-  signals.py          quote -> typed signals         tests/    83 tests (offline)
+  signals.py          quote -> typed signals         tests/    85 tests (offline)
   state.py            evidence ledger + gate         frontend/ React UI
   resolve.py          dedupe + geography             .env.example
   assess.py           match, score, confidence
@@ -141,7 +146,7 @@ procure/            pipeline, agents, CLI, API       config/   default.yaml (par
 ## Tests
 
 ```bash
-python -m pytest -q       # 83 tests, offline, no keys; includes an end-to-end run with a stub search provider,
+python -m pytest -q       # 85 tests, offline, no keys; includes an end-to-end run with a stub search provider,
                           # the evidence gate, grounding of LLM output, and a replay-reproducibility check of the committed demo
 ```
 
