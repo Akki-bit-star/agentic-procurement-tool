@@ -1,0 +1,395 @@
+{
+ "request": {
+  "model": "gemini-3.5-flash",
+  "messages": [
+   {
+    "role": "system",
+    "content": "You are a procurement research agent. Find real vendors for ONE requirement in ONE geography and record verbatim-quote evidence about them. A separate program ranks vendors; you only gather evidence.\n\nREQUIREMENT M-02: \"40 mm MS ERW, Class B pipe\", 500 t (unit assumed), to Ahmedabad, Gujarat, India.\nResolved: DN40, OD 48.3 mm, wall 3.2 mm, standard IS 1239 (Part 1), series medium. Ambiguities/assumptions: SIZE_BARE_MM: Treated as DN40 nominal bore. The OD-40 mm reading is kept as an alternate search.; STANDARD_NOT_STATED: Assumed IS 1239 (Part 1) because 'Class B' is the Indian trade shorthand for its medium series.; CLASS_MEANING: Read as IS 1239 medium series; wall thickness taken from the BIS table.; QTY_UNIT_MISSING: Assumed 500 tonnes (~140,449 m, ~23,408 x 6 m lengths).. Search for BOTH the as-written reading and the alternates.\n\nGEOGRAPHY: Find vendors with an office, plant, warehouse or stock yard in AHMEDABAD (Gujarat) - dealers, stockists and mills. Use search_places for local businesses and search_web with 'Ahmedabad'. Location evidence = a quote containing the address.\n\nWHAT TO RECORD per promising vendor (record_evidence, quote <=250 chars, copied EXACTLY, from the right url): (1) a passage showing the product: size / wall / standard / ERW (a table row is ideal); (2) an address quote; (3) a phone/email quote; (4) certification (BIS/ISI), capacity, stock, delivery or export statements if present.\nRULES: never invent or paraphrase a quote; do not record facts you did not see; prefer vendor-owned pages over marketplaces; if a page has no address, read its contact/about link; one vendor_id per company.\nBUDGET: 14 steps, 4 searches, 8 page reads. Suggested starting queries (already cached, free): ERW pipe 40 NB 48.3 x 3.2 mm IS 1239 Ahmedabad | MS ERW pipe 40 mm OD manufacturer dealer Ahmedabad Gujarat | MS ERW pipe 40 NB medium stockist Ahmedabad | ERW MS pipe manufacturers Ahmedabad (search_places)\nStop with finish() once ~5 promising vendors have product + address evidence, or when the budget is nearly used."
+   },
+   {
+    "role": "user",
+    "content": "Begin. Call tools; finish() when done."
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_301840",
+      "type": "function",
+      "function": {
+       "name": "search_places",
+       "arguments": "{\"query\": \"MS ERW pipe stockist dealer manufacturer Ahmedabad\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "ErQECrEEAWkUfROYsaXISxAPC4y0P98lGli+75NkIDo+MoDHx9R4EnoElxYQs0X0W8TFoS75DGSp/L7/RAVfJuKykJDrYDkgdT1pHyivYqccd3u3ovQYI2WCS+7bVM/tmJ0OkA4mk+vaxX3yrJyGQhvH5FzmwZJ9jDlk6Jw0/G55dOZsMuCPvET2TCE5htSMPkN+wuE+U3Z3IGkXhVbDUJttpW2CrxMkb+hQgTWu0z1j/8m6Meh6gsIibUhRdgmtn89U4xaTFLbsGBRD/XfZ31M9eK5tCIbTIvuliOaZHMkkwjIYIL3e0TtnA+0mDD+o+mn6u85Kx5nVTSsirCrprQhVNLLeMW6xynepKV4S2StccLq92W7RcmWbr03jyAV2g22DszRUNOMJD/HIzY/tZYKzlZlau6nJybMubOvJ9tr78BKcT0A2xd41x3XzqRPJCUe+bHzhy8v1v7BoyB/uf4RYsEglGxIkeFJFvR6HB7FbStODoLt1e/W1J5i5IEC25IydawoVFLmI6nNf+b5oJuwSpDux4mRnnepwtpWDUz11ipbCwORxjQRPMWrLIKOeFOKmu/kwcLAiz7wU3cluQhQLU4mYftEZS480qYD3an3/IGkDgzM9JusjRd+S7M2agimDLvsblDS6oaORaTl66Xs79e4NLC+FKMY1Lunjpc2usdOX5Dn/zVljRkcIFPRgcyI9qQhMYu+TlFM+ag5gjispxH89Y8erXzCsDEJsudUTzS9Y4np9"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_301840",
+    "content": "{\"elided\":\"older tool result omitted; call status() for your candidate list\"}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_328238",
+      "type": "function",
+      "function": {
+       "name": "search_web",
+       "arguments": "{\"scope\": \"india\", \"query\": \"\\\"MS ERW\\\" \\\"IS 1239\\\" pipe \\\"Ahmedabad\\\" \\\"40\\\" OR \\\"DN40\\\" OR \\\"48.3\\\"\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EswGCskGAWkUfRNojePMCKKticTnLrPibKGNV927tibmcrN/zdYvEbaYna8y1rJz9+M3dcB4JRTeaNX7/EzPjuPOjG7qlUuHZF7J5NnUIKcl+2eabCwJ4t8ftwyTbNDXXI8k8ZaKj1linzHdexVx3M3lICe08bbibLYMp6QsTXGvrNsDZRkWDoG3fzrKQEJvkHOitLlGFSyxzFY5YIza6oyAqktvXyjy3HbQYAVK868fgvmL+Ha5dyhds3vgzLmeBD4OQOI7YqDv40XLIYC9gvjkMacroeanIIYUfeevFwCD7nbMW0La13fDNcjp4i9AOeAZr3M2FfK0mU469FADqOGcpSyiSFDSBe4FPrDnw0neg0HkZK6GVEulD33qnjr7ctOqxSObS/1BivyBlrW8S14FkFaNqHqgF/OU39VxLmXR3+B9+lDTAOmoR9mYWdRasv4dQjiRL+3EL+FdpEO4Bq0A9rgmrNuRJNCanMcM7pW6ztBcDc4bjBUuic8NDWQXEJMzaMj8ZpUDJKAAS+iC5d1M1INbhK0jwq/elPTHC/oOanlPfamsfzt1KZ7f9H9C4jCrxm1lVZ7TZRivJxhpy11Gj+HdraP48XrKB+Tyj+Kro2RwH0Sm9j8HQFkxYCoZQC7X5bQy3H8tzKtO7BPXaUl0rplCHYF6VFn5WE+y9/FiEpld7th8bHg1DTBv9c4zzIVyPDzQ98TYmiIxOwIcTtUGf71KcKzvOAPYzkQueOR+CMTBdgmd2MJfa28FYGcyymf91f7dPImZ1RxI5OChSsTFuWKgJ1x3kZrOus6R7HH1XN8ZianNYUhzmREJvbjAKH7ablmVvJeimENY3q5ZmN3HWh5FVLlKIBW7K7xahjiNNJqtNJDiVcI6ClMbt+BW+OEQbYBkdyTzqKkd6iJKIkMOAHcTdSYyDpE/5i4PfHqSk2yk+iAW1f1HkTxmJ2ne+doudo/pQ40Q467vfwMujO9Cgx5qwUExsQxa4JZn2nciiiMh1ehAzFxMGAKgxlpXQfic0wZ+b6b04Fhr65dciGqYpPsq6OdCqqrSdeusswNS8jHagah+bEezRt0oShqIS4iDoWP/71bZ7ubxmC+ONvAC6d4e1SyQkc8xxiplEw=="
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_328238",
+    "content": "{\"elided\":\"older tool result omitted; call status() for your candidate list\"}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_485395",
+      "type": "function",
+      "function": {
+       "name": "read_page",
+       "arguments": "{\"url\": \"https://www.jaivikas.com/\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EuIFCt8FAWkUfRMcbOfoFo9tA3xdHax5p7Z3ged14nL6tfzPsSXLhPHeyhsqqUxmndiuAt648Su9eeZ+T5jG8nz+nNVxnOJtlaWDWLC0hDY3e/eU3VSZcOW34f1ZVdg7HwvxQQVUA31YJpuK11BGhCx9B4jAPBteNxM7F3yQGtDRlag+aTZLB9dWVHlc3+T1Tu41K4WSZ4qdNIiWYzSHLvbqnv0HknqvvnbZpxbfRxO3XpqQwM6+Oydru5LP92FnBKjmuWrG3HaRpJCDlqaw4zFzn76YQHaFmVgRbZLZaCIoHrFjyD6R69IZtc7K1ghHOzzz/6n52qdrSVKboDoQqGTg4y1JGE2Uv06crffZfJ/tjn/bxUEnRIKsL8xHNUTSQgs74D6zny+/taZf8sUvR6wYiUrT/f1AFtQcDEg+RLT4NfiztCZKLoXvAYCXcR6h6GGFwOaTW27XAWKaECwKDys3SLUnLYvus2ZLTaK7enpaQ+Rq03cgbkBCXPyNy9r1QulZvpRAwJrYbS+Ic9+GwNBjgDbEBV/QXP1c5U2+UqcSYbhiHddTjd/FnTHql9pRiU/GW7JVPVWMsfgUFaMjdgQIZmVL5kreyo1bp12r4lRFIL+f1/VPYRf3h2cOAeSfhRfFjL35UWFhqeLesXjpE59nIk84cNYyQcFojTcuuZJEa5FLWg6Tdne9CejdVGizYawdEh/epflgei/yUn7QASeFQvY+90dOzwxIUe38S48Chd6HxPlxhbOrqe159cmvwpq3i5Bu5MQqbs+m14bTgpl0zC5lp54LMRtJ/ALl9KpcH2y287V3FzdQWoptGoj3cLYrcgLJlMqralBiQiSVZr8NAwDasOWF2lf1uAQBUJsZLCdJzrrcftqMmOBotDeIpC33n+uBpE6WrUal5FiAevifoYuS7kUbMVo2oems5mIolpLnHp9Mjl7hHzTSBxzU63wSC3zbxOnCnJg7YQQS/Lvgs/Qe"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_485395",
+    "content": "{\"elided\":\"older tool result omitted; call status() for your candidate list\"}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_928173",
+      "type": "function",
+      "function": {
+       "name": "read_page",
+       "arguments": "{\"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EuICCt8CAWkUfRNt1N2eKGRQi+E7xEq+0ZpZ0KAr7yAA9II6xhSstdgTWmL8IM35eKCIjdRMtvmfpbez9DFWcbLv24aFEzJCGNBkbEW0GiF3Q1yWRJYmf0v+k0PpoUYymklVSg5PsoF3yOom/R8j0sfX+6SUHWrAxXPqrVcvCQfMVlvSGvvx/CX2gbnVYCAxjd4SgkpDVtFys9QikQmpL7/h8c28S/YEO858W2WLSetprz8gdMhntYaVKnfUiS1o4jl0eecGdQRCI2ePWw7VSIQxgntS7m6j07jxteu1kTaW/Z8l0saKDVqrqvN/Lz+57fkKSlCvEKXAHJc3aorvSIGp5fFq0x2iWlLtUjE2EIP3r531n6+CRQjP/ViyCQUsZQm0dP0ZNd1jA93HgBH/LFS85ac5VDjZqKVxys9Iqq9zEdzIka3pxvCJR/C0WtLHrH5A4z7Gs0RAcY/Wuek0rkm8VpH9"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_928173",
+    "content": "{\"elided\":\"older tool result omitted; call status() for your candidate list\"}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_302390",
+      "type": "function",
+      "function": {
+       "name": "record_evidence",
+       "arguments": "{\"vendor_id\": \"rajsagar.com\", \"quote\": \"Complex, Next to Hotel Fortune Land Mark, Ashram Road, Ahmedabad. 380013 (Gujarat) India.\", \"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\", \"claim_type\": \"location\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EpAFCo0FAWkUfRPyimvLlJr1hvBEAxM6ATKGEgY/SBsEYfWxBv1sOJpf0JcerSVmM4LurdHn/G5tO2M4fmh9yXugsJMAQqfwAEFu4Z9uWiORoRjsbw5mRD9KcYjI+KBzrHCnG8y3GYSMwpIUsQTGLzSLtwnCvzImRkdTaLparnxzLkfMk1EAN5gcabvJzwNsasbxx2HLIrxpT27M4H5e1HW4HiXzCm9vGIuuXE2gAZ/t9jY4gwBVbUVqaJVKRBE4zoU9nzQWgRqMex67d3DNimgz/xC62/T5DdCjLIeMUXsO0SkWSDRmo6IpWZMK8rWfbowIq2oplXQv57EdjOdYMi73NDRxsAzqxTjz1+0x5bQ9I6ILzT+fCbSe+Lx2abmuIa88gq9iYJ9T5XTg5G2UXy3sfRmG/6Cw2OobATKq5n8BBIMvB47utaoeuiXoQompYtNC41CXCq559jNhkm1HRiqfne9Ysekqf60P7sNK2U3LbeoRpYt6RWQqK+X8TdwfCarfP+wZGEfwreEgCB8RhQjxoZLxVdSRKKUZTdlf6tGWILGAfecQ9ewXEIWTyJDHnp8vQpaFOt8rxU2v8BwoIqJ0dqpE3ByC5Sr5I+Ktwab7Zj5yHs4hF0D+ywuogijqsSgN2VvTNtwXufrt5ydzXpeUzdURxooejb/hOrYmU+UQTppZLUC2RLVIxyyHxn04NEXNmNxJqneXjPPWCKyH8YNahGyNnyJN8RIIU1Fi5R2V4nAuJro1ojrg0TpjoKM+tNWvL+6yA91H6wqOVC7jtM/qP3PNSjyTYa2/5pGbWkk9oHfmaBdPk/gi2tGm4nivLigFb9NcktPbz/LDFZtV1GDVWIRekhxhslB7XcY6UZxZqEc="
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_302390",
+    "content": "{\"accepted\": true, \"budget\": {\"steps_left\": 9, \"searches_left\": 2, \"reads_left\": 6}}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_378972",
+      "type": "function",
+      "function": {
+       "name": "record_evidence",
+       "arguments": "{\"claim_type\": \"standard\", \"quote\": \"Black Steel Pipes Dimensions | \\u2013 IS: 1239 (Pt I) \\u2013 2004, Equivalent to BS \\u2013 1387 / 1985\", \"vendor_id\": \"rajsagar.com\", \"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EqEBCp4BAWkUfROqXhKBeHtusNMe3d4zmIYXjBJSpZuZK5D9fUp6Vs5/pW6++fTs8tkXtXfY6lUOhoYH52JOteJo2EAdgKZYWU1uLJFVjF9/ul4S7FCgUd8gPpomtkJEYxwyW7n587PmOgPJlKQnk6oc3glQza703rc4WBKbuS90+euFJdyZPKRuwTvwNk5EzqfT8Ou2oO7pRPdlFRQiHh8cJMQ="
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_378972",
+    "content": "{\"accepted\": true, \"budget\": {\"steps_left\": 8, \"searches_left\": 2, \"reads_left\": 6}}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_485175",
+      "type": "function",
+      "function": {
+       "name": "record_evidence",
+       "arguments": "{\"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\", \"vendor_id\": \"rajsagar.com\", \"quote\": \"1.1/2\\u2033 | 40 mm\", \"claim_type\": \"product_match\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EpYBCpMBAWkUfROQxV1uVk5NgVpxxuHCLwxN5SeMinNKADpzTicLX7aPah/PDgm98hR7es594HSxw+rwCEqNtNwYRPGS31LhhtPYLhmI0r5jbd0Npq0Flk1Nz3vUuO0vzaEhka+ERRqQaPUIjRKstv+pIA9oAZr977GmUKt/yZpbrLkw8hdGvGiBSmmra4g4S4+kxPfHDNTG"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_485175",
+    "content": "{\"accepted\": true, \"budget\": {\"steps_left\": 7, \"searches_left\": 2, \"reads_left\": 6}}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_302870",
+      "type": "function",
+      "function": {
+       "name": "record_evidence",
+       "arguments": "{\"claim_type\": \"contact\", \"quote\": \"Phone : +91 79 2755 0626, +91 79 2755 0053 Email : info@rajsagar.com | rajsagarsteel@yahoo.co.in\", \"vendor_id\": \"rajsagar.com\", \"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "EpUBCpIBAWkUfRMUPlDYVIiq5TJbUoD6OyR7r7ZCWW95mvaquMm1xBcULThf8dTwlFqxfYMUrhH8hFMsdwt7387lzOnctM42++Oh3LlFVKrh+dfKOGXkLbUPI18e94jriXr0mso97dRLuLwTV/lXv049I7jKDor7fSYNA10HwLcFlM3Z58B8QdvUzonuJTtMHRO/Aebt/mw="
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_302870",
+    "content": "{\"accepted\": false, \"reason\": \"quote not found in the recorded text of that URL. Copy it EXACTLY from a read_page key_passages entry or a search snippet for the same url (or read the page first).\", \"budget\": {\"steps_left\": 6, \"searches_left\": 2, \"reads_left\": 6}}"
+   },
+   {
+    "role": "assistant",
+    "content": "",
+    "tool_calls": [
+     {
+      "id": "call_820910",
+      "type": "function",
+      "function": {
+       "name": "record_evidence",
+       "arguments": "{\"quote\": \"Phone : +91 79 27550626, +91 79 27550053 Email : info@rajsagar.com | rajsagarsteel@yahoo.co.in\", \"vendor_id\": \"rajsagar.com\", \"claim_type\": \"contact\", \"url\": \"https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html\"}"
+      },
+      "extra_content": {
+       "google": {
+        "thought_signature": "Es0CCsoCAWkUfRMQbfm2f2cBKXZ5Jv4tdDxunssB9QVbcTsHT3PXphACRPU3jEC2bXOM2gOHrtBiNp2VoZrDt4dJ/+3hCvtei4nkBxPJGCr9f22le0N6DVLODyk14U4NlwXi/VSmqVdF2RFZ1uqqJcMyxpOP9SSK1b0QORRcoAfQe0oQ0LTjvBsSdO8cBRxToTZlJ54KU/bFnwRMvkC4Wt1qzTvhG7UwVs4cmzj7jiKcn8C4g3LWcgpvnUGkMH+XzlgcCMCEEnDKaK0DCnQJX6PkC/5RF1D6IWAIXkjjuj8On2jWzk6uzTLtZrEhIvzXoZ4lT0t0nt4r2CypzXAKwsBOWWVXKX0dqBf8MbgxAoT0aOwpmvMxFVOw5YYZNpqehfMYFKDHTBmZdCeEdMlZBL1AAqqaXTEN/ZN41AAInB1lOjK59bXXWFXUYwgFe1zd"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "role": "tool",
+    "tool_call_id": "call_820910",
+    "content": "{\"accepted\": false, \"reason\": \"quote not found in the recorded text of that URL. Copy it EXACTLY from a read_page key_passages entry or a search snippet for the same url (or read the page first).\", \"budget\": {\"steps_left\": 5, \"searches_left\": 2, \"reads_left\": 6}}"
+   }
+  ],
+  "tools": [
+   {
+    "type": "function",
+    "function": {
+     "name": "search_web",
+     "description": "Web search. Returns candidate vendors (vendor_id, name, url, snippet). Costs one search from your budget unless the same query was run before.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       },
+       "scope": {
+        "type": "string",
+        "enum": [
+         "india",
+         "global"
+        ],
+        "description": "india = Indian results, global = worldwide"
+       }
+      },
+      "required": [
+       "query",
+       "scope"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "search_places",
+     "description": "Google-Maps style business search (address, phone, website). Best for local dealers/stockists. Costs one search.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "query"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "read_page",
+     "description": "Fetch a page and return a compact digest: key passages (size/standard/wall/address/contact/capacity), contact links. Quote evidence ONLY from text you have seen in a digest or search snippet.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "url": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "record_evidence",
+     "description": "Record one fact about a vendor. `quote` MUST be copied verbatim (<=250 chars) from a read_page digest or a search snippet of that exact `url`. Rejected if the quote is not found in that source.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "vendor_id": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string"
+       },
+       "claim_type": {
+        "type": "string",
+        "enum": [
+         "product_match",
+         "standard",
+         "class",
+         "wall",
+         "certification",
+         "capacity",
+         "stock",
+         "profile",
+         "delivery",
+         "export",
+         "moq",
+         "location",
+         "contact"
+        ]
+       },
+       "quote": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "vendor_id",
+       "url",
+       "claim_type",
+       "quote"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "status",
+     "description": "Show remaining budget and your candidates with how much evidence each has.",
+     "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "finish",
+     "description": "End your research (when you have examined the promising vendors or are out of budget).",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "summary": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "summary"
+      ]
+     }
+    }
+   }
+  ],
+  "kind": "chat",
+  "v": 2
+ },
+ "value": {
+  "content": null,
+  "finish_reason": "tool_calls",
+  "tool_calls": [
+   {
+    "id": "call_506473",
+    "name": "record_evidence",
+    "arguments": {
+     "url": "https://www.rajsagar.com/erw-black-steel-pipes-supplier-stockist.html",
+     "vendor_id": "rajsagar.com",
+     "claim_type": "contact",
+     "quote": "info@rajsagar.com"
+    },
+    "arguments_error": null,
+    "extra": {
+     "google": {
+      "thought_signature": "Eo0DCooDAWkUfROJI3kj7WA1Bdr+TTiXS9as1DD2hldIRBoW6C8iLBmkr8h+UQaqtMrXUH1lf3UviYxzWNTqiTv5S05lrjrOvKjlrSbSyky8ruRlNekPX1OieaHcJCGLJjZQwdtpdijR5kcCSEgMtwiI20GVpcRzmm8jh6dlfkAa0BL/5G8BjIdT9elNLWxQDeZti4ekqbsAaQgta+nqib67lChB8hk6xqpSoFWZBV4YMDcNwYv9nHavkqrs9V7+TT3n3fxskp9D95Z6XuCS9+GbM91f9kaGqtLbOFJAEHIQnPsULezgktkCWd+j/o9wwAW/brKnsy+NPTdGx5wHiR5fKFW7gaEBdFOumuiw9J1UGwATlJBt2MTi/37cAHuynmfBa+apP1t+G8Z4Y7RzZixmjTpEH5wbxq9eJ6FxqFC0wvDFRIEMf4km3eocSf8mjELGnJxuhUGcP26/pYTWIXPsJEXNxluiIe2RsLW3+1XbBxxk55Ov5e5e7pAoRb3s76szn4oEiLbt1M77h2DW0A=="
+     }
+    }
+   }
+  ]
+ }
+}

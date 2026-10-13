@@ -1,0 +1,19 @@
+# --- secrets: never commit. Keys live only in .env (copy .env.example) ---
+.env
+
+# --- python ---
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# --- node (the built UI in frontend/dist IS committed so `uvicorn procure.api:app` serves the UI with no build step) ---
+node_modules/
+
+# --- run outputs and logs. The committed demo lives in demo/output; the recorded replay cache lives in data/cache ---
+runs/
+*.log
+
+# --- per-machine LLM quota state (written inside the committed cache dir) ---
+data/cache/.llm_state.json

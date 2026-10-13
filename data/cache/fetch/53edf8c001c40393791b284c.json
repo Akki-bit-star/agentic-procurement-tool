@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://www.risingsteels.com/is-1239-mild-steel-pipe.html"
+ },
+ "value": {
+  "url": "https://www.risingsteels.com/is-1239-mild-steel-pipe.html",
+  "ok": false,
+  "status": 403,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 403",
+  "fetched_at": "2026-10-13T10:07:43+00:00"
+ }
+}

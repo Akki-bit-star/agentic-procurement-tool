@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://www.risingsteels.com/blog/bs1387-tube.html"
+ },
+ "value": {
+  "url": "https://www.risingsteels.com/blog/bs1387-tube.html",
+  "ok": false,
+  "status": 202,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "page has no extractable text (JS-rendered or blocked)",
+  "fetched_at": "2026-10-13T11:40:10+00:00"
+ }
+}

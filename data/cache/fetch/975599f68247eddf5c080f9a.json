@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://www.lgpipeindia.com/is-1239-yst-210-240-310-355-pipes-tubes.html"
+ },
+ "value": {
+  "url": "https://www.lgpipeindia.com/is-1239-yst-210-240-310-355-pipes-tubes.html",
+  "ok": false,
+  "status": 403,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 403",
+  "fetched_at": "2026-10-13T11:34:17+00:00"
+ }
+}

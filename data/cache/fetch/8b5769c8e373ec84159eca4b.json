@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://ratnasteeltech.com/contact-us"
+ },
+ "value": {
+  "url": "https://ratnasteeltech.com/contact-us",
+  "ok": false,
+  "status": null,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "ConnectError: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007)",
+  "fetched_at": "2026-10-13T11:14:22+00:00"
+ }
+}

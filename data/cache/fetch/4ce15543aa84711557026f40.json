@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://baolaipipes.com/"
+ },
+ "value": {
+  "url": "https://baolaipipes.com/",
+  "ok": false,
+  "status": 403,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 403",
+  "fetched_at": "2026-10-13T10:07:42+00:00"
+ }
+}

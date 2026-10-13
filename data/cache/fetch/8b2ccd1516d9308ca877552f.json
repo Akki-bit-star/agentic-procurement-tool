@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://anspipes.com/"
+ },
+ "value": {
+  "url": "https://anspipes.com/",
+  "ok": false,
+  "status": null,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "blocked by SSRF guard: dns failure: [Errno 11001] getaddrinfo failed",
+  "fetched_at": "2026-10-13T11:03:49+00:00"
+ }
+}

@@ -1,0 +1,59 @@
+# LLM provider presets: `python -m procure run ... --llm gemini` applies one of these to the `llm:` config section.
+#
+# Every preset except `anthropic` uses the OpenAI-compatible chat-completions protocol, so adding a provider is one
+# entry here (base_url + model ids + the NAME of the environment variable holding the key).
+#
+# IMPORTANT: free-tier limits and model ids change often - check the provider's current docs / dashboard.
+# `requests_per_minute` is a client-side pace limit (stay under your plan's limit); 429 responses are also retried.
+# Free tiers may use your prompts for training: this tool only sends public web text and the requirement, never secrets.
+
+gemini:                       # Google AI Studio key (free tier, no card): https://aistudio.google.com/apikey
+  provider: openai_compat
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai
+  api_key_env: GEMINI_API_KEY
+  fast_model: gemini-3.5-flash
+  strong_model: gemini-3.5-flash
+  # The free tier caps requests PER DAY PER MODEL (observed: 20/day). When a model is exhausted the client rotates to the
+  # next one (and remembers the exhaustion across runs). Ids come from the key's own model list; check them periodically.
+  # (gemini-2.5-* returned 404 "no longer available to new users" in testing, so they are not listed.)
+  fallback_models: [gemini-3.7-flash, gemini-3.8-flash, gemini-3.1-flash-lite, gemini-3.5-flash-lite, gemini-3-flash-preview, gemini-flash-latest, gemini-flash-lite-latest]
+  extra_params: {reasoning_effort: low}     # less 'thinking' = faster, cheaper turns; dropped automatically if a model rejects it
+  requests_per_minute: 8
+
+groq:                         # https://console.groq.com/keys  (fast, but small tokens-per-minute on the free plan)
+  provider: openai_compat
+  base_url: https://api.groq.com/openai/v1
+  api_key_env: GROQ_API_KEY
+  fast_model: llama-3.1-8b-instant
+  strong_model: openai/gpt-oss-120b
+  requests_per_minute: 20
+
+openrouter:                   # https://openrouter.ai/keys  (free models are heavily rate-limited per day)
+  provider: openai_compat
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
+  fast_model: openrouter/free
+  strong_model: openrouter/free
+  requests_per_minute: 10
+
+ollama:                       # local, no key: `ollama pull qwen2.5:7b` then run the server (needs a tool-capable model)
+  provider: openai_compat
+  base_url: http://127.0.0.1:11434/v1
+  api_key_env: null
+  fast_model: qwen2.5:7b
+  strong_model: qwen2.5:7b
+  requests_per_minute: 60
+
+openai:                       # any OpenAI-compatible paid endpoint
+  provider: openai_compat
+  base_url: https://api.openai.com/v1
+  api_key_env: OPENAI_API_KEY
+  fast_model: gpt-4.1-mini
+  strong_model: gpt-4.1
+  requests_per_minute: 60
+
+anthropic:
+  provider: anthropic
+
+none:
+  provider: none

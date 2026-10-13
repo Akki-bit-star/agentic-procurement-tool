@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://www.dmitubes.com/carbon-steel-welded-erw-pipe.html"
+ },
+ "value": {
+  "url": "https://www.dmitubes.com/carbon-steel-welded-erw-pipe.html",
+  "ok": false,
+  "status": 403,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 403",
+  "fetched_at": "2026-10-13T11:34:22+00:00"
+ }
+}

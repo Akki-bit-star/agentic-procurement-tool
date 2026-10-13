@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://navkartube.com/contact"
+ },
+ "value": {
+  "url": "https://navkartube.com/contact",
+  "ok": false,
+  "status": 200,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "page has no extractable text (JS-rendered or blocked)",
+  "fetched_at": "2026-10-13T11:14:23+00:00"
+ }
+}

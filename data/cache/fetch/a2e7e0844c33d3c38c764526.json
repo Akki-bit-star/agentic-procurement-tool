@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://steelindiaco.net/"
+ },
+ "value": {
+  "url": "https://steelindiaco.net/",
+  "ok": false,
+  "status": 202,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "page has no extractable text (JS-rendered or blocked)",
+  "fetched_at": "2026-10-13T11:40:10+00:00"
+ }
+}

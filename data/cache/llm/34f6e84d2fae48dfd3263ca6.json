@@ -1,0 +1,171 @@
+{
+ "request": {
+  "model": "gemini-3.5-flash",
+  "messages": [
+   {
+    "role": "system",
+    "content": "You are a procurement research agent. Find real vendors for ONE requirement in ONE geography and record verbatim-quote evidence about them. A separate program ranks vendors; you only gather evidence.\n\nREQUIREMENT M-02: \"40 mm MS ERW, Class B pipe\", 500 t (unit assumed), to Ahmedabad, Gujarat, India.\nResolved: DN40, OD 48.3 mm, wall 3.2 mm, standard IS 1239 (Part 1), series medium. Ambiguities/assumptions: SIZE_BARE_MM: Treated as DN40 nominal bore. The OD-40 mm reading is kept as an alternate search.; STANDARD_NOT_STATED: Assumed IS 1239 (Part 1) because 'Class B' is the Indian trade shorthand for its medium series.; CLASS_MEANING: Read as IS 1239 medium series; wall thickness taken from the BIS table.; QTY_UNIT_MISSING: Assumed 500 tonnes (~140,449 m, ~23,408 x 6 m lengths).. Search for BOTH the as-written reading and the alternates.\n\nGEOGRAPHY: Find NON-INDIAN manufacturers/exporters. They rarely cite IS 1239: search by OD x wall and international equivalents (EN 10255 / BS 1387 / ASTM A53). Record address/country and any export-to-India, MOQ, lead-time or port statement exactly as written.\n\nWHAT TO RECORD per promising vendor (record_evidence, quote <=250 chars, copied EXACTLY, from the right url): (1) a passage showing the product: size / wall / standard / ERW (a table row is ideal); (2) an address quote; (3) a phone/email quote; (4) certification (BIS/ISI), capacity, stock, delivery or export statements if present.\nRULES: never invent or paraphrase a quote; do not record facts you did not see; prefer vendor-owned pages over marketplaces; if a page has no address, read its contact/about link; one vendor_id per company.\nBUDGET: 14 steps, 4 searches, 8 page reads. Suggested starting queries (already cached, free): ERW steel pipe 48.3 mm x 3.2 mm manufacturer exporter | ERW steel pipe 40 NB 48.3 mm EN 10255 BS 1387 ASTM A53 exporter to India | 48.3 mm OD ERW pipe wholesale bulk supplier\nStop with finish() once ~5 promising vendors have product + address evidence, or when the budget is nearly used."
+   },
+   {
+    "role": "user",
+    "content": "Begin. Call tools; finish() when done."
+   }
+  ],
+  "tools": [
+   {
+    "type": "function",
+    "function": {
+     "name": "search_web",
+     "description": "Web search. Returns candidate vendors (vendor_id, name, url, snippet). Costs one search from your budget unless the same query was run before.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       },
+       "scope": {
+        "type": "string",
+        "enum": [
+         "india",
+         "global"
+        ],
+        "description": "india = Indian results, global = worldwide"
+       }
+      },
+      "required": [
+       "query",
+       "scope"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "search_places",
+     "description": "Google-Maps style business search (address, phone, website). Best for local dealers/stockists. Costs one search.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "query"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "read_page",
+     "description": "Fetch a page and return a compact digest: key passages (size/standard/wall/address/contact/capacity), contact links. Quote evidence ONLY from text you have seen in a digest or search snippet.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "url": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "record_evidence",
+     "description": "Record one fact about a vendor. `quote` MUST be copied verbatim (<=250 chars) from a read_page digest or a search snippet of that exact `url`. Rejected if the quote is not found in that source.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "vendor_id": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string"
+       },
+       "claim_type": {
+        "type": "string",
+        "enum": [
+         "product_match",
+         "standard",
+         "class",
+         "wall",
+         "certification",
+         "capacity",
+         "stock",
+         "profile",
+         "delivery",
+         "export",
+         "moq",
+         "location",
+         "contact"
+        ]
+       },
+       "quote": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "vendor_id",
+       "url",
+       "claim_type",
+       "quote"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "status",
+     "description": "Show remaining budget and your candidates with how much evidence each has.",
+     "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "finish",
+     "description": "End your research (when you have examined the promising vendors or are out of budget).",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "summary": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "summary"
+      ]
+     }
+    }
+   }
+  ],
+  "kind": "chat"
+ },
+ "value": {
+  "content": null,
+  "finish_reason": "tool_calls",
+  "tool_calls": [
+   {
+    "id": "call_385240",
+    "name": "search_web",
+    "arguments": {
+     "query": "ERW steel pipe 48.3 mm x 3.2 mm manufacturer exporter",
+     "scope": "global"
+    },
+    "arguments_error": null
+   }
+  ]
+ }
+}

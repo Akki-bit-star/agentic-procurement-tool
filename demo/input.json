@@ -1,0 +1,7 @@
+{
+  "materials": [
+    {"id": "M-01", "description_raw": "ERW pipe, DN 50, 60.3 × 5.5 mm, IS 1239", "quantity": 1000, "unit": null, "location_raw": "Ahmedabad, Gujarat, India"},
+    {"id": "M-02", "description_raw": "40 mm MS ERW, Class B pipe", "quantity": 500, "unit": null, "location_raw": "Ahmedabad, Gujarat, India"},
+    {"id": "M-03", "description_raw": "ERW pipe, DN 80, 89.5 × 4.8 mm, IS 1239", "quantity": 1200, "unit": null, "location_raw": "Ahmedabad, Gujarat, India"}
+  ]
+}

@@ -1,0 +1,51 @@
+# Reference table: IS 1239 (Part 1) : 2004 "Steel tubes" (Sixth Revision), Tables 2-5.
+#
+# PROVENANCE: PRIMARY. Transcribed from the BIS standard text (public copy:
+#   https://law.resource.org/pub/in/bis/S10/is.1239.1.b.2004.pdf), tables for light, medium and heavy
+#   tubes, verified against the extracted text on 2026-10-13. Re-verify against the current BIS edition
+#   before using in a purchase specification.
+#
+# Facts taken from the standard text itself:
+#   * Scope (cl. 1.1): welded and seamless plain-end or screwed-and-socketed steel tubes for water,
+#     non-hazardous gas, air and steam; 6 mm to 150 mm nominal bore.
+#   * Manufacture (cl. 6.3): hot finished seamless, cold drawn seamless, hot finished welded, and
+#     "Electric resistance welded or high frequency induction welded (ERW or HFIW)".
+#   * The standard classifies tubes as LIGHT, MEDIUM and HEAVY (marked L / M / H, cl. 17). It does NOT use
+#     "Class A/B/C"; that is Indian trade shorthand (A=light, B=medium, C=heavy).
+#   * Colour bands (cl. 17.2): light = yellow, medium = blue, heavy = red.
+#   * Thickness tolerance, welded tubes: light +not limited/-8 %; medium and heavy +not limited/-10 % (cl. 9.1).
+#
+# `od` below is the TRADE NOMINAL OD (used only to build search terms). The standard itself gives an OD
+# RANGE [min, max]; light tubes have a slightly different range from medium/heavy.
+source_note: "IS 1239 (Part 1):2004 Tables 2-5 (BIS), verified 2026-10-13 from the public text."
+source_url: "https://law.resource.org/pub/in/bis/S10/is.1239.1.b.2004.pdf"
+class_map:
+  A: light
+  B: medium
+  C: heavy
+colour_band: {light: yellow, medium: blue, heavy: red}
+scope_nb_range: [6, 150]
+# size keys: DN (nominal bore, mm)
+#   od           trade nominal OD (search term only)
+#   light/medium/heavy   wall thickness, mm
+#   od_range_light / od_range_mh   [min, max] OD from the standard, mm
+#   kgpm         plain-end mass, kg/m, from the standard
+sizes:
+  15:  {od: 21.3,  light: 2.0, medium: 2.6, heavy: 3.2, od_range_light: [21.0, 21.4],   od_range_mh: [21.0, 21.8],   kgpm: {light: 0.947, medium: 1.21, heavy: 1.44}}
+  20:  {od: 26.9,  light: 2.3, medium: 2.6, heavy: 3.2, od_range_light: [26.4, 26.9],   od_range_mh: [26.5, 27.3],   kgpm: {light: 1.38,  medium: 1.56, heavy: 1.87}}
+  25:  {od: 33.7,  light: 2.6, medium: 3.2, heavy: 4.0, od_range_light: [33.2, 33.8],   od_range_mh: [33.3, 34.2],   kgpm: {light: 1.98,  medium: 2.41, heavy: 2.93}}
+  32:  {od: 42.4,  light: 2.6, medium: 3.2, heavy: 4.0, od_range_light: [41.9, 42.5],   od_range_mh: [42.0, 42.9],   kgpm: {light: 2.54,  medium: 3.10, heavy: 3.79}}
+  40:  {od: 48.3,  light: 2.9, medium: 3.2, heavy: 4.0, od_range_light: [47.8, 48.4],   od_range_mh: [47.9, 48.8],   kgpm: {light: 3.23,  medium: 3.56, heavy: 4.37}}
+  50:  {od: 60.3,  light: 2.9, medium: 3.6, heavy: 4.5, od_range_light: [59.6, 60.2],   od_range_mh: [59.7, 60.8],   kgpm: {light: 4.08,  medium: 5.03, heavy: 6.19}}
+  65:  {od: 76.1,  light: 3.2, medium: 3.6, heavy: 4.5, od_range_light: [75.2, 76.0],   od_range_mh: [75.3, 76.6],   kgpm: {light: 5.71,  medium: 6.42, heavy: 7.93}}
+  80:  {od: 88.9,  light: 3.2, medium: 4.0, heavy: 4.8, od_range_light: [87.9, 88.7],   od_range_mh: [88.0, 89.5],   kgpm: {light: 6.72,  medium: 8.36, heavy: 9.90}}
+  100: {od: 114.3, light: 3.6, medium: 4.5, heavy: 5.4, od_range_light: [113.0, 113.9], od_range_mh: [113.1, 115.0], kgpm: {light: 9.75,  medium: 12.2, heavy: 14.5}}
+  # Light series is not tabulated above 100 NB.
+  125: {od: 139.7, light: null, medium: 4.8, heavy: 5.4, od_range_light: null, od_range_mh: [138.5, 140.8], kgpm: {light: null, medium: 15.9, heavy: 17.9}}
+  150: {od: 165.1, light: null, medium: 4.8, heavy: 5.4, od_range_light: null, od_range_mh: [163.9, 166.5], kgpm: {light: null, medium: 18.9, heavy: 21.3}}
+# Sizes where "<n> mm" is plausibly a nominal bore in Indian trade usage.
+trade_nominal_bores: [15, 20, 25, 32, 40, 50, 65, 80, 100, 125, 150]
+# A wall that belongs to a different standard family - used to EXPLAIN a mismatch, never to change the spec.
+other_standard_walls:
+  50: {value: 5.54, label: "Sch 80 (ASME B36.10 family) - outside IS 1239"}
+  80: {value: 7.62, label: "Sch 80 (ASME B36.10 family) - outside IS 1239"}

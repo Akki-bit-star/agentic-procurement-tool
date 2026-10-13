@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://everestmetal.in/contact-us"
+ },
+ "value": {
+  "url": "https://everestmetal.in/contact-us",
+  "ok": false,
+  "status": 404,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 404",
+  "fetched_at": "2026-10-13T11:40:08+00:00"
+ }
+}

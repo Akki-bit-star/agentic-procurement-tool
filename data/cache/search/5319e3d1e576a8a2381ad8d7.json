@@ -1,0 +1,131 @@
+{
+ "request": {
+  "provider": "serper",
+  "endpoint": "places",
+  "q": "MS GI pipe dealers stockist Ahmedabad",
+  "country": "in",
+  "num": 10
+ },
+ "value": [
+  {
+   "title": "Jai Vikas Steel Corporation Private Limited | MS | ERW | GI | GP Pipe Manufacturers and Distributors in Ahmedabad",
+   "url": "https://www.jaivikas.com/",
+   "snippet": "Pipe supplier",
+   "position": 1,
+   "address": "SURVEY NO - 382, SHYAM INDUSTRIAL ESTATE, PLOT NO - 2/3, CANAL ROAD",
+   "phone": "098251 27921",
+   "website": "https://www.jaivikas.com/",
+   "rating": 4.8,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Padmawati Traders",
+   "url": "http://www.padmawatitraders.com/",
+   "snippet": "Pipe supplier",
+   "position": 2,
+   "address": null,
+   "phone": "098983 34675",
+   "website": "http://www.padmawatitraders.com/",
+   "rating": 4.1,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Padmavati Tubes",
+   "url": "",
+   "snippet": "Pipe supplier",
+   "position": 3,
+   "address": "14, Jagdish Estate, Ambuja School Gali, Bapu Nagar Rd, near Industrial Estate",
+   "phone": "098240 94509",
+   "website": null,
+   "rating": 4.4,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Hariom Steel Traders",
+   "url": "http://hariomsteeltraders.com/",
+   "snippet": "Building materials store",
+   "position": 4,
+   "address": "Sahjanand Estate, Plot no. 12, railway crossing, near Gota, behind shayona Krupa bungalows",
+   "phone": "081608 63487",
+   "website": "http://hariomsteeltraders.com/",
+   "rating": 4.3,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "ARIHANT ENTERPRISE",
+   "url": "http://www.arihantenterprises.co/",
+   "snippet": "Pipe supplier",
+   "position": 5,
+   "address": "NAVRATNA CORPORATE PARK Ashok Vatika, nr. Jayantilal Park BRTS Bus Stand, opp. Dishman House",
+   "phone": "098980 17189",
+   "website": "http://www.arihantenterprises.co/",
+   "rating": 4.9,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "KHADKA-G STEEL CORPORATION",
+   "url": "http://www.khadkagsteel.com/",
+   "snippet": "Steel industry",
+   "position": 6,
+   "address": "Survey No. 77, Shrinath Estate, 1-2-3-4, opp. Shivam Park, opp. Gurukrupa Petrol Pump",
+   "phone": null,
+   "website": "http://www.khadkagsteel.com/",
+   "rating": 4.9,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Kantilal Enterprise (pipes and fittings suppliers)",
+   "url": "",
+   "snippet": "Pipe supplier",
+   "position": 7,
+   "address": "58-Shivam-2, Near Aqsa Hotel, Sarkhej-Bawala Road, Near, Ujala Circle",
+   "phone": "095376 96030",
+   "website": null,
+   "rating": 4.8,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Goyal Pipes and Tubes",
+   "url": "http://goyalpipesandtubes.com/",
+   "snippet": "Pipe supplier",
+   "position": 8,
+   "address": "H.K. industrial Compound, 1/1, Keval Kanta Rd, nr. Radha Krishna Estate",
+   "phone": "093754 86268",
+   "website": "http://goyalpipesandtubes.com/",
+   "rating": 5.0,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Ganesh Steel Tubes",
+   "url": "https://shreeganeshsteelpipes.com/products/carbon-steel-pipes",
+   "snippet": "Pipe supplier",
+   "position": 9,
+   "address": "Parikh Estate, 7, Nagarvel Hanuman Rd, near Keval Kanta Road",
+   "phone": null,
+   "website": "https://shreeganeshsteelpipes.com/products/carbon-steel-pipes",
+   "rating": 4.9,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Steel dealers",
+   "url": "https://www.indiamart.com/steeldealers/",
+   "snippet": "Steel distributor",
+   "position": 10,
+   "address": "12 , Mansi Appartment, near vidhyanagar high school",
+   "phone": "098240 80910",
+   "website": "https://www.indiamart.com/steeldealers/",
+   "rating": 4.9,
+   "query": "MS GI pipe dealers stockist Ahmedabad",
+   "provider": "serper"
+  }
+ ]
+}

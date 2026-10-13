@@ -1,0 +1,131 @@
+{
+ "request": {
+  "provider": "serper",
+  "endpoint": "places",
+  "q": "ERW MS pipe manufacturers Ahmedabad",
+  "country": "in",
+  "num": 10
+ },
+ "value": [
+  {
+   "title": "Jai Vikas Steel Corporation Private Limited | MS | ERW | GI | GP Pipe Manufacturers and Distributors in Ahmedabad",
+   "url": "https://www.jaivikas.com/",
+   "snippet": "Steel distributor",
+   "position": 1,
+   "address": "SURVEY NO - 382, SHYAM INDUSTRIAL ESTATE, PLOT NO - 2/3, CANAL ROAD, Changodar, Ahmedabad, Gujarat 382213",
+   "phone": "098251 27921",
+   "website": "https://www.jaivikas.com/",
+   "rating": 4.8,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Padmavati Tubes",
+   "url": "",
+   "snippet": "Pipe supplier",
+   "position": 2,
+   "address": "14, Jagdish Estate, Ambuja School Gali, Bapu Nagar Rd, near Industrial Estate, Bapunagar, Ahmedabad, Gujarat 380024",
+   "phone": "098240 94509",
+   "website": null,
+   "rating": 4.4,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Navkar Tubes & Tools",
+   "url": "https://www.navkartube.com/",
+   "snippet": "Pipe Manufacturer",
+   "position": 3,
+   "address": "1426/B, Trikampura Patiya, Phase:3, Vatva GIDC, Ahmedabad, Gujarat 382445",
+   "phone": "087804 22006",
+   "website": "https://www.navkartube.com/",
+   "rating": 4.8,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "MN METAL",
+   "url": "https://www.mnmetal.in/",
+   "snippet": "Pipe supplier",
+   "position": 4,
+   "address": "Office No.311, 3rd Floor \"BAPUNAGAR ONE\" Business Hub, opp. White house, nr. Shyam Sikhar Complex, Bapunagar, Ahmedabad, Gujarat 380024",
+   "phone": "084889 94771",
+   "website": "https://www.mnmetal.in/",
+   "rating": 4.7,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Raj Rajeshwari Metal Impex-Stockist-Seamless Hydraulic & Honed Tubes, MS & SS Seamless Pipes & Fittings, MS ERW & CRC Pipes.",
+   "url": "",
+   "snippet": "Metal supplier",
+   "position": 5,
+   "address": "Shop No. 2 & 3, Shah Estate, Chakudia Mahadev Road, nr. Gravity Estate, Rakhial, Ahmedabad, Gujarat 380021",
+   "phone": "088660 31488",
+   "website": null,
+   "rating": 5.0,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Anamica Pipes & Tubes-Stockist-MS & CS Seamless Hydraulic Pipes & Honed Tubes, MS Seamless Pipe & Fitting, MS ERW & CRC Pipe",
+   "url": "",
+   "snippet": "Metal industry suppliers",
+   "position": 6,
+   "address": "Shop No. 9, Prabhuvir Shopping Center, opp. State Bank Of India, Municipal Industrial Estate, Corner, Bapunagar, Ahmedabad, Gujarat 380024",
+   "phone": "093270 06672",
+   "website": null,
+   "rating": 5.0,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Rajsagar Steel Pvt Ltd",
+   "url": "https://www.rajsagar.com/",
+   "snippet": "Pipe Manufacturer",
+   "position": 7,
+   "address": "103 Sukh Sagar Complex Ashram Road Usmanpura, Next to Fortune Land Mark Hotel, Ashram Road, Usmanpura, Ahmedabad, Gujarat 380013",
+   "phone": "098989 72828",
+   "website": "https://www.rajsagar.com/",
+   "rating": 4.3,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Ans Pipes Ltd - Apl Apollo Tubes Pipes Ltd",
+   "url": "http://www.anspipes.com/",
+   "snippet": "Steel distributor",
+   "position": 8,
+   "address": "Survey no 12/34, Nr Navapura, Ahmedabad Rajkot Rd, Patiya, Ahmedabad, Gujarat 382213",
+   "phone": "098242 72833",
+   "website": "http://www.anspipes.com/",
+   "rating": 4.6,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Padmawati Traders",
+   "url": "http://www.padmawatitraders.com/",
+   "snippet": "Pipes Wholesaler",
+   "position": 9,
+   "address": "PLOT NO -44 45/A/12/B Aarkoi Cement Compound Vatva Railway Crossing Over Bridge Road, opp. Yamuna Estate, near Neoplast Factory, Phase I, Vatva GIDC, Ahmedabad, Gujarat 382445",
+   "phone": "098983 34675",
+   "website": "http://www.padmawatitraders.com/",
+   "rating": 4.1,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Ratnabhumi Steeltech Private Limited",
+   "url": "https://ratnasteeltech.com/",
+   "snippet": "Pipe Manufacturer",
+   "position": 10,
+   "address": "Survey No 230, Bhayla NH8, Taluka Bavla, Gujarat 382220",
+   "phone": "079907 65225",
+   "website": "https://ratnasteeltech.com/",
+   "rating": 4.8,
+   "query": "ERW MS pipe manufacturers Ahmedabad",
+   "provider": "serper"
+  }
+ ]
+}

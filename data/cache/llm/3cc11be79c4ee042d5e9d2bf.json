@@ -1,0 +1,177 @@
+{
+ "request": {
+  "model": "gemini-3.5-flash",
+  "messages": [
+   {
+    "role": "system",
+    "content": "You are a procurement research agent. Find real vendors for ONE requirement in ONE geography and record verbatim-quote evidence about them. A separate program ranks vendors; you only gather evidence.\n\nREQUIREMENT M-02: \"40 mm MS ERW, Class B pipe\", 500 t (unit assumed), to Ahmedabad, Gujarat, India.\nResolved: DN40, OD 48.3 mm, wall 3.2 mm, standard IS 1239 (Part 1), series medium. Ambiguities/assumptions: SIZE_BARE_MM: Treated as DN40 nominal bore. The OD-40 mm reading is kept as an alternate search.; STANDARD_NOT_STATED: Assumed IS 1239 (Part 1) because 'Class B' is the Indian trade shorthand for its medium series.; CLASS_MEANING: Read as IS 1239 medium series; wall thickness taken from the BIS table.; QTY_UNIT_MISSING: Assumed 500 tonnes (~140,449 m, ~23,408 x 6 m lengths).. Search for BOTH the as-written reading and the alternates.\n\nGEOGRAPHY: Find INDIAN vendors OUTSIDE Ahmedabad that could supply or deliver to Ahmedabad; prefer manufacturers (mills) because the order is large. Record their address, any delivery / pan-India statement and BIS/ISI mention.\n\nWHAT TO RECORD per promising vendor (record_evidence, quote <=250 chars, copied EXACTLY, from the right url): (1) a passage showing the product: size / wall / standard / ERW (a table row is ideal); (2) an address quote; (3) a phone/email quote; (4) certification (BIS/ISI), capacity, stock, delivery or export statements if present.\nRULES: never invent or paraphrase a quote; do not record facts you did not see; prefer vendor-owned pages over marketplaces; if a page has no address, read its contact/about link; one vendor_id per company.\nBUDGET: 14 steps, 4 searches, 8 page reads. Suggested starting queries (already cached, free): ERW pipe 40 NB 48.3 x 3.2 mm IS 1239 manufacturer India | IS 1239 ERW pipe manufacturers India 40 NB medium bulk supply | MS ERW pipe 40 mm OD supplier Gujarat Maharashtra Rajasthan\nStop with finish() once ~5 promising vendors have product + address evidence, or when the budget is nearly used."
+   },
+   {
+    "role": "user",
+    "content": "Begin. Call tools; finish() when done."
+   }
+  ],
+  "tools": [
+   {
+    "type": "function",
+    "function": {
+     "name": "search_web",
+     "description": "Web search. Returns candidate vendors (vendor_id, name, url, snippet). Costs one search from your budget unless the same query was run before.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       },
+       "scope": {
+        "type": "string",
+        "enum": [
+         "india",
+         "global"
+        ],
+        "description": "india = Indian results, global = worldwide"
+       }
+      },
+      "required": [
+       "query",
+       "scope"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "search_places",
+     "description": "Google-Maps style business search (address, phone, website). Best for local dealers/stockists. Costs one search.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "query": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "query"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "read_page",
+     "description": "Fetch a page and return a compact digest: key passages (size/standard/wall/address/contact/capacity), contact links. Quote evidence ONLY from text you have seen in a digest or search snippet.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "url": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "record_evidence",
+     "description": "Record one fact about a vendor. `quote` MUST be copied verbatim (<=250 chars) from a read_page digest or a search snippet of that exact `url`. Rejected if the quote is not found in that source.",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "vendor_id": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string"
+       },
+       "claim_type": {
+        "type": "string",
+        "enum": [
+         "product_match",
+         "standard",
+         "class",
+         "wall",
+         "certification",
+         "capacity",
+         "stock",
+         "profile",
+         "delivery",
+         "export",
+         "moq",
+         "location",
+         "contact"
+        ]
+       },
+       "quote": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "vendor_id",
+       "url",
+       "claim_type",
+       "quote"
+      ]
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "status",
+     "description": "Show remaining budget and your candidates with how much evidence each has.",
+     "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+     }
+    }
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "finish",
+     "description": "End your research (when you have examined the promising vendors or are out of budget).",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "summary": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "summary"
+      ]
+     }
+    }
+   }
+  ],
+  "kind": "chat",
+  "v": 2
+ },
+ "value": {
+  "content": null,
+  "finish_reason": "tool_calls",
+  "tool_calls": [
+   {
+    "id": "call_554954",
+    "name": "search_web",
+    "arguments": {
+     "query": "ERW pipe 40 NB 48.3 x 3.2 mm IS 1239 manufacturer India",
+     "scope": "india"
+    },
+    "arguments_error": null,
+    "extra": {
+     "google": {
+      "thought_signature": "EtgHCtUHAWkUfROTSTcgYnAnZDtPdIFSCutGJ+G8MXbBDzQsy2meWG35MTM2f5tIHDfxV6Zv0jUKxEhEZGl1Ixz77Qfx0PSB7w4u36HPgkCAtQG2O5REj+SjxdnQkXogWoSWBJyid3p0pn6BRYwb8ZWq3qdJCgOOebVSPvU2NVJhnQIxWTE8jeIJC0GYY8Ok/a5lQnaKnvzKCOpDoh8CFbLh1mwUQW/qeXodq/2o98E46AhOsQ4eYenC1+NvaNZQgWLEa7PfwhoyTkO72fWnn3Yfua5YI1iQodwz10TQWYPIX32YiaS2OYoudeh1sNqkM3aUJ71GfrPbUXsbklsfiR+NcU3C/TyMPabZ+vkRYaUMxIOAx3o0g3GONFZvE7dfbHri5P4OtFEjeVEsL5YEKmtcif4RuVDV9Nn4DwzocZ8hbGMZNvoK7xbj9+a0QwTuSnvY+pqdqiHQd0lmokPCk7Jbrwz2NHpHtrWQp+8GzCTfUMmG8xS7HXlh9yHaT+vXkuu2uuOvO1RgQSyj4zZeEOKSZz/qynZLVJzUVEcO7nmnhpkpz9GZ5SeD7KbMs+9Biw4qhocr3toZU3mz2kS8xP3ULFrzhIT8LhAa/6/Q1ufD/w4bV3qs9YSHafYXT6aKL1vg+6gAoduRXtnVfadF8rZb1BDnUE8zqESKQxTVXyMqbcWRcpxv8ecZyqP28Kiyv4vBdZ9j7GrJkwCyPIQYG3NBqc8BZaQa2i09PTr/e5i67wTqbiA5Ozj1o/flFNiw0fWVjHoW/lMaGyHE3/Wl8I6ArZbo5allGEpD5dkSvjwZjkVl8VMFVVyShEkoIDUrNsc86OeUNzthY9lF5ImX/qYM0wIvfUiPuZIrpplhJK2lxeLp6Lc6lmBg0bwHI7jx4EXoEaquIQ3BwQefBQoQyFGfv02/R/Qlw2lQ4zJIACcG5qYIQlai33a3kx5+Tz+46cvGSC9Oa6qg8yy/Jb00N4+xsT6vNKe7gXUvHorfeBAofeYizQZE9eft2eUHlV1rnqqbAimBq95L0Cp9zFN2P6heLrrBB+KvPSFn266NNlGqhvH4F/CK1GOfVSQud7BU57JHCT7cwomB4ZEV2V76E2egFh917cHXQzdO7DHyUwOkKwjj7BCT84KyLO2KfU6m6s+rjYyoA6a4wyc3A330zIvVdnyDFM0Q4+wFt/104Z2biEvnvoFgpIy/0DGvn8ETh5uXqrauGlXxdkxFT1cyZqtUGe2nvn5PwZrQ+0PlbTmV+vgm2QP4EpRLc7tXHE+5/9gaugjljTL41fExy8bvZv4OZk9nwXEeEaGT"
+     }
+    }
+   }
+  ]
+ }
+}

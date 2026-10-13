@@ -1,0 +1,131 @@
+{
+ "request": {
+  "provider": "serper",
+  "endpoint": "places",
+  "q": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+  "country": "in",
+  "num": 10
+ },
+ "value": [
+  {
+   "title": "Jai Vikas Steel Corporation Private Limited | MS | ERW | GI | GP Pipe Manufacturers and Distributors in Ahmedabad",
+   "url": "https://www.jaivikas.com/",
+   "snippet": "Steel distributor",
+   "position": 1,
+   "address": "SURVEY NO - 382, SHYAM INDUSTRIAL ESTATE, PLOT NO - 2/3, CANAL ROAD",
+   "phone": "098251 27921",
+   "website": "https://www.jaivikas.com/",
+   "rating": 4.8,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Navkar Tubes & Tools",
+   "url": "https://www.navkartube.com/",
+   "snippet": "Pipe Manufacturer",
+   "position": 2,
+   "address": "Navkar Tubes & Tools, 1426/B",
+   "phone": "087804 22006",
+   "website": "https://www.navkartube.com/",
+   "rating": 4.8,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Padmavati Tubes",
+   "url": "https://www.google.com/maps?cid=10373656191788472902",
+   "snippet": "Pipe supplier",
+   "position": 3,
+   "address": "14, Jagdish Estate, Ambuja School Gali, Bapu Nagar Rd, near Industrial Estate",
+   "phone": "098240 94509",
+   "website": null,
+   "rating": 4.4,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Ganesh Steel Tubes",
+   "url": "https://shreeganeshsteelpipes.com/products/carbon-steel-pipes",
+   "snippet": "Pipe supplier",
+   "position": 4,
+   "address": "Parikh Estate, 7, Nagarvel Hanuman Rd, near Keval Kanta Road",
+   "phone": null,
+   "website": "https://shreeganeshsteelpipes.com/products/carbon-steel-pipes",
+   "rating": 4.9,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "MN METAL",
+   "url": "https://www.mnmetal.in/",
+   "snippet": "Pipe supplier",
+   "position": 5,
+   "address": "Office No.311, 3rd Floor \"BAPUNAGAR ONE\" Business Hub, opp. White house, nr. Shyam Sikhar Complex",
+   "phone": "084889 94771",
+   "website": "https://www.mnmetal.in/",
+   "rating": 4.7,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Goyal Pipes and Tubes",
+   "url": "http://goyalpipesandtubes.com/",
+   "snippet": "Pipe supplier",
+   "position": 6,
+   "address": "H.K. industrial Compound, 1/1, Keval Kanta Rd, nr. Radha Krishna Estate",
+   "phone": "093754 86268",
+   "website": "http://goyalpipesandtubes.com/",
+   "rating": 5.0,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Rajsagar Steel Pvt Ltd",
+   "url": "https://www.rajsagar.com/",
+   "snippet": "Pipe Manufacturer",
+   "position": 7,
+   "address": "103 Sukh Sagar Complex Ashram Road Usmanpura, Next to Fortune Land Mark Hotel, Ashram Road, Usmanpura",
+   "phone": "098989 72828",
+   "website": "https://www.rajsagar.com/",
+   "rating": 4.3,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Kantilal Enterprise (pipes and fittings suppliers)",
+   "url": "https://www.google.com/maps?cid=11026720841818667309",
+   "snippet": "Pipe supplier",
+   "position": 8,
+   "address": "58-Shivam-2, Near Aqsa Hotel, Sarkhej-Bawala Road, Near, Ujala Circle",
+   "phone": "095376 96030",
+   "website": null,
+   "rating": 4.8,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "ADI PIPE & FITTINGS | SQUARE PIPE, ROUND PIPE | MS, ERW, GI, CS, API 5L | WHOLESALE DISTRIBUTOR",
+   "url": "https://www.google.com/maps?cid=10343444078625278618",
+   "snippet": "Pipe supplier",
+   "position": 9,
+   "address": "AUTO FREIND ESTATE, B/H, Sarkhej-Bavla Rd, nr. NILKANTH WAY BRIDGE",
+   "phone": "081409 54457",
+   "website": null,
+   "rating": 5.0,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  },
+  {
+   "title": "Ans Pipes Ltd - Apl Apollo Tubes Pipes Ltd",
+   "url": "http://www.anspipes.com/",
+   "snippet": "Steel distributor",
+   "position": 10,
+   "address": "Survey no 12/34, Nr Navapura, Ahmedabad Rajkot Rd",
+   "phone": "098242 72833",
+   "website": "http://www.anspipes.com/",
+   "rating": 4.6,
+   "query": "MS ERW pipe stockist dealer manufacturer Ahmedabad",
+   "provider": "serper"
+  }
+ ]
+}

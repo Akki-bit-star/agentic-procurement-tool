@@ -1,0 +1,129 @@
+# Deterministic geography vocabulary. Used to classify vendors into Ahmedabad / India-other / Global
+# from evidence text. Extend freely - it is data, not code.
+
+# "Ahmedabad" tier = the city and its commonly listed industrial localities.
+ahmedabad:
+  names: [Ahmedabad, Ahmadabad, Amdavad]
+  localities: [Naroda, Odhav, Vatva, Narol, Kathwada, Rakhial, Chandkheda, Sarkhej, Changodar,
+               Gomtipur, Asarwa, Shahibaug, Sola, Bapunagar, Ramol, Isanpur, Vastral, Aslali, Bavla, Sanand]
+  pincode_prefixes: ["380", "382", "383"]   # supporting hint only: also covers Gandhinagar etc.
+
+india_states: [Gujarat, Maharashtra, Rajasthan, Madhya Pradesh, Uttar Pradesh, Delhi, Haryana, Punjab, Karnataka,
+               Tamil Nadu, Telangana, Andhra Pradesh, Kerala, West Bengal, Odisha, Bihar, Jharkhand, Chhattisgarh,
+               Uttarakhand, Himachal Pradesh, Assam, Goa, Jammu and Kashmir]
+
+# city -> state (not exhaustive; unknown Indian cities fall back to a state/country match)
+india_cities:
+  Surat: Gujarat
+  Rajkot: Gujarat
+  Vadodara: Gujarat
+  Baroda: Gujarat
+  Gandhinagar: Gujarat
+  Kalol: Gujarat
+  Mehsana: Gujarat
+  Bhavnagar: Gujarat
+  Jamnagar: Gujarat
+  Morbi: Gujarat
+  Anjar: Gujarat
+  Gandhidham: Gujarat
+  Mundra: Gujarat
+  Bharuch: Gujarat
+  Ankleshwar: Gujarat
+  Vapi: Gujarat
+  Valsad: Gujarat
+  Navsari: Gujarat
+  Junagadh: Gujarat
+  Surendranagar: Gujarat
+  Halol: Gujarat
+  Dahej: Gujarat
+  Mumbai: Maharashtra
+  Navi Mumbai: Maharashtra
+  Thane: Maharashtra
+  Pune: Maharashtra
+  Nagpur: Maharashtra
+  Nashik: Maharashtra
+  Aurangabad: Maharashtra
+  Vasai: Maharashtra
+  Palghar: Maharashtra
+  Delhi: Delhi
+  New Delhi: Delhi
+  Gurugram: Haryana
+  Gurgaon: Haryana
+  Faridabad: Haryana
+  Ludhiana: Punjab
+  Jaipur: Rajasthan
+  Jodhpur: Rajasthan
+  Indore: Madhya Pradesh
+  Bhopal: Madhya Pradesh
+  Lucknow: Uttar Pradesh
+  Kanpur: Uttar Pradesh
+  Ghaziabad: Uttar Pradesh
+  Noida: Uttar Pradesh
+  Bengaluru: Karnataka
+  Bangalore: Karnataka
+  Chennai: Tamil Nadu
+  Coimbatore: Tamil Nadu
+  Hyderabad: Telangana
+  Visakhapatnam: Andhra Pradesh
+  Kochi: Kerala
+  Kolkata: West Bengal
+  Howrah: West Bengal
+  Raipur: Chhattisgarh
+  Bhilai: Chhattisgarh
+  Jamshedpur: Jharkhand
+  Bhubaneswar: Odisha
+  Rourkela: Odisha
+  Chandigarh: Punjab
+  Dehradun: Uttarakhand
+
+# country names (and aliases) for non-India vendors
+countries:
+  China: [China, "P.R. China", PRC, Tianjin, Tangshan, Shandong, Hebei, Shanghai, Guangzhou, Foshan, Wuxi, Zhejiang, Jiangsu, Hangzhou, Cangzhou, Liaocheng, Hengshui]
+  Turkey: [Turkey, Türkiye, Turkiye, Istanbul, Izmir, Gebze, Kocaeli]
+  "United Arab Emirates": [UAE, "United Arab Emirates", Dubai, "Abu Dhabi", Sharjah, Jebel Ali]
+  Vietnam: [Vietnam, "Viet Nam", Hanoi, "Ho Chi Minh"]
+  "South Korea": [Korea, Seoul, Busan, Pohang]
+  Taiwan: [Taiwan, Taipei, Kaohsiung, Taichung]
+  Malaysia: [Malaysia, "Kuala Lumpur", Selangor, Johor]
+  Thailand: [Thailand, Bangkok]
+  Indonesia: [Indonesia, Jakarta]
+  Japan: [Japan, Tokyo, Osaka]
+  Germany: [Germany, Deutschland, Düsseldorf, Duisburg, Hamburg]
+  Italy: [Italy, Italia, Milan, Brescia]
+  Spain: [Spain]
+  Poland: [Poland]
+  "United Kingdom": [UK, "United Kingdom", England, Britain, Birmingham, Sheffield]
+  "United States": [USA, "United States", "U.S.A.", Houston, Texas, Pittsburgh]
+  Egypt: [Egypt, Cairo]
+  "Saudi Arabia": [Saudi, "Saudi Arabia", Riyadh, Jeddah, Dammam]
+  Oman: [Oman, Muscat, Sohar]
+  Singapore: [Singapore]
+  Pakistan: [Pakistan, Karachi, Lahore]
+  Bangladesh: [Bangladesh, Dhaka, Chittagong]
+  "Sri Lanka": [Sri Lanka, Colombo]
+  Russia: [Russia, Moscow]
+  Ukraine: [Ukraine]
+  Brazil: [Brazil]
+  Mexico: [Mexico]
+  Canada: [Canada]
+  Australia: [Australia]
+  Nepal: [Nepal, Kathmandu]
+
+# Hints from top-level domains (weak: country only, never enough for Ahmedabad / India-city)
+tld_country:
+  in: India
+  cn: China
+  tr: Turkey
+  ae: "United Arab Emirates"
+  vn: Vietnam
+  kr: "South Korea"
+  tw: Taiwan
+  my: Malaysia
+  th: Thailand
+  id: Indonesia
+  jp: Japan
+  de: Germany
+  it: Italy
+  uk: "United Kingdom"
+  pk: Pakistan
+  bd: Bangladesh

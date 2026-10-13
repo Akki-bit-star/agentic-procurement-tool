@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API (debug)",
+      "type": "debugpy", "request": "launch", "module": "uvicorn",
+      "args": ["procure.api:app", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "justMyCode": false, "console": "integratedTerminal"
+    },
+    {
+      "name": "CLI agent run (debug)",
+      "type": "debugpy", "request": "launch", "module": "procure",
+      "args": ["run", "demo/input_one.json", "--out", "runs/debug", "--llm", "gemini", "--agent"],
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe", "justMyCode": false
+    }
+  ]
+}

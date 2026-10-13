@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://lgpipeindia.com/contact-us"
+ },
+ "value": {
+  "url": "https://lgpipeindia.com/contact-us",
+  "ok": false,
+  "status": 403,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "HTTP 403",
+  "fetched_at": "2026-10-13T10:07:38+00:00"
+ }
+}

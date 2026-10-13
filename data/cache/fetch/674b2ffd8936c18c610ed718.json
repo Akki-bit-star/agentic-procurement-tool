@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://ratnasteeltech.com/blog/a-guide-to-choosing-the-best-is-1239-erw-pipes-for-your-project/"
+ },
+ "value": {
+  "url": "https://ratnasteeltech.com/blog/a-guide-to-choosing-the-best-is-1239-erw-pipes-for-your-project/",
+  "ok": false,
+  "status": null,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "ConnectError: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007)",
+  "fetched_at": "2026-10-13T11:14:20+00:00"
+ }
+}

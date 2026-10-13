@@ -1,0 +1,16 @@
+{
+ "request": {
+  "url": "https://navstarsteel.com/"
+ },
+ "value": {
+  "url": "https://navstarsteel.com/",
+  "ok": false,
+  "status": 202,
+  "text": "",
+  "title": null,
+  "site_name": null,
+  "links": [],
+  "error": "page has no extractable text (JS-rendered or blocked)",
+  "fetched_at": "2026-10-13T11:40:11+00:00"
+ }
+}

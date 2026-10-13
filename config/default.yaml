@@ -1,0 +1,133 @@
+# Default run configuration. Non-secret. Secrets (API keys) come from environment / .env only.
+default_unit: tonnes            # used when the input has no unit (assumption is logged)
+strict: false                   # true => stop and ask when a CRITICAL ambiguity exists
+
+procurement_location: {city: Ahmedabad, state: Gujarat, country: India}
+
+search:
+  provider: serper              # serper | fixture   (brave/tavily: add an adapter, same interface)
+  country: in
+  results_per_query: 10
+  # Hard budgets. These protect the (limited) search quota.
+  max_search_calls_total: 60
+  max_queries_per_material_per_tier: 3
+  max_places_calls_per_material: 1
+  max_pages_fetched_per_vendor: 2
+  max_followup_pages_per_vendor: 3        # contact/about pages tried when no address was found
+  max_vendors_verified_per_material_per_tier: 8
+  fetch_timeout_s: 15
+  fetch_max_bytes: 600000
+
+llm:
+  provider: anthropic           # anthropic | none  (none => rules-only evidence extraction)
+  fast_model: claude-haiku-5-5
+  strong_model: claude-sonnet-5-5
+  # NOTE: no temperature setting - current Claude models reject non-default sampling params.
+  # Reproducibility comes from the response cache (data/cache) + replay mode, not from sampling.
+  max_calls_total: 200            # agent mode needs ~ (materials x 3 geographies x agent.max_steps) model turns
+  base_url: null                  # set by a preset (config/llm_presets.yaml) for OpenAI-compatible providers
+  api_key_env: null               # NAME of the env var holding the key; the key itself is never in config
+  requests_per_minute: null       # client-side pacing for rate-limited free plans
+  fallback_models: []             # rotate to these when a model's daily quota is exhausted (set by presets)
+  extra_params: {}                # provider tuning knobs merged into each request (set by presets)
+  agent:                          # model-directed research loop (enable with --agent)
+    enabled: false
+    max_steps: 10
+    min_vendors_per_tier: 4       # fewer than this -> rule-driven discovery backstop also runs for that geography
+    max_searches: 4
+    max_reads: 8
+    max_output_tokens: 1500
+    digest_chars: 1800
+
+shortlist:
+  per_tier_per_material: 5
+  min_confidence: LOW           # LOW keeps everything with at least a category match; raise to MEDIUM to be strict
+  include_unverified: true      # unverified leads are listed but never shortlisted
+
+# Ranking weights (sum to 1.0). See docs/PARAMETERS.md.
+weights:
+  technical_match: 0.30
+  bulk_relevance: 0.20
+  geography_delivery: 0.20
+  certification: 0.15
+  source_quality: 0.10
+  contactability: 0.05
+
+match_score:           # technical_match component by match class
+  EXACT: 1.0
+  NEAR: 0.6
+  CATEGORY: 0.3
+  UNVERIFIED: 0.1
+
+source_reliability:    # higher is better; used for source_quality + conflict resolution
+  vendor_site: 0.9     # the vendor's own website (we cannot tell manufacturer from trader by URL alone)
+  manufacturer_site: 1.0
+  certification_body: 1.0
+  directory: 0.5
+  maps: 0.6
+  marketplace: 0.4
+  other: 0.3
+  unknown: 0.2
+
+# bulk_relevance component by supplier profile (see assess.py). Shown to the buyer as inference, not fact.
+bulk_scores:
+  manufacturer_with_capacity: 1.0   # manufacturer + a capacity / output statement found
+  manufacturer: 0.7
+  stockist_with_stock: 0.5          # stockist/dealer + stock / warehouse statement
+  stockist: 0.4
+  trader: 0.35
+  marketplace_listing: 0.25
+  unknown: 0.2
+# At or above this tonnage a trader/stockist is scored one step lower (mill-direct is the realistic route).
+large_order_tonnes: 100
+
+# Pages / domains that can never be a vendor (reference material, social media, government, forums).
+non_vendor_domains:
+  - wikipedia.org
+  - youtube.com
+  - facebook.com
+  - linkedin.com
+  - instagram.com
+  - twitter.com
+  - x.com
+  - pinterest.com
+  - quora.com
+  - reddit.com
+  - scribd.com
+  - researchgate.net
+  - slideshare.net
+  - academia.edu
+  - gov.in
+  - nic.in
+  - bis.gov.in
+  - issuu.com
+  - resource.org          # public copies of the BIS standards themselves
+  - zauba.com             # import/export trade-data aggregators
+  - volza.com
+  - importyeti.com
+  - tradeatlas.com
+
+# Domains treated as marketplaces / directories (a listing there alone never yields HIGH confidence).
+marketplace_domains:
+  - indiamart.com
+  - exportersindia.com
+  - tradeindia.com
+  - alibaba.com
+  - made-in-china.com
+  - justdial.com
+  - lntsufin.com
+  - amazon.in
+  - ec21.com
+  - globalsources.com
+  - dir.indiamart.com
+  - m.indiamart.com
+
+# Indian standards / vendor-relevance vocabulary used by the deterministic evidence extractor.
+tolerated_standards_near_match: ["IS 3589", "IS 1161", "IS 4270", "IS 4923", "API 5L", "ASTM A53", "BS 1387", "EN 10255"]
+
+# Hard facts about India-import compliance are NOT asserted; they are listed as checks to run.
+global_import_checks:
+  - "BIS / Quality Control Order applicability for imported steel pipe (verify current notification)"
+  - "Import duty and landed-cost estimate (needs customs / forwarder quote)"
+  - "Minimum order quantity vs container-load fit"
+  - "Indicative lead time incl. sea freight and port clearance"
